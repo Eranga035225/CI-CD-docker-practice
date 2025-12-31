@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-app.get("/22", (req, res) => {
+app.get("/", (req, res) => {
   res.send("CI/CD Docker Works!");
 });
 

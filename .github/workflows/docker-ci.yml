@@ -1,21 +1,27 @@
 name: Docker CI Pipeline
 
-
-on: 
+on:
   push:
-    branches: [ 'main' ]
+    branches: [ "main" ]
 
-jobs: 
+jobs:
   docker-build-run:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name:  Set up Docker
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
-      - name:  Build Docker image
-        run: docker build -t ci-cd-demo:latest
+      - name: Build Docker image
+        run: docker build -t ci-cd-demo:latest .
 
+      - name: Run Docker container
+        run: |
+          docker run -d -p 3000:3000 --name test-container ci-cd-demo:latest
+          sleep 5
+
+      - name: Health check
+        run: curl http://localhost:3000

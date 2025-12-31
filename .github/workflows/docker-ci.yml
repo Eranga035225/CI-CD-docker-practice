@@ -1,0 +1,13 @@
+name: Docker CI Pipeline
+
+
+on: 
+  push:
+    branches: [ 'main' ]
+
+jobs: 
+  docker-build-run:
+    runs-on: ubuntu-latest
+
+    
+

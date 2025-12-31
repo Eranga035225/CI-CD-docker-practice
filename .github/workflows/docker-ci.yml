@@ -33,7 +33,7 @@ jobs:
       - name: Health check
         run: |
           for i in {1..5}; do
-            curl http://localhost:3004 && break
+            curl http://localhost:3000 && break
             echo "Waiting for app..."
             sleep 3
           done
